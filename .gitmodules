@@ -1,0 +1,3 @@
+[submodule "pontarius-xmpp"]
+	path = pontarius-xmpp
+	url = ./pontarius-xmpp
