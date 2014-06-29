@@ -1,18 +1,18 @@
 module Bot where
 
 -- The conf type. Feel free to change it.
-type Conf = (String)
+type Conf = (String, String)
 
 -- the initial conf value. can use IO to construct
 mkConf :: IO Conf
 mkConf = do
-  return "hello"
+  return ("Nobody", "hello")
 
 -- Takes a conf, does some IO and returns a list of messages to reply with and a conf.
 -- Use the conf to pass state around.
 receiveMessage :: Conf -> String -> String -> String -> String -> IO ([String], Conf)
 receiveMessage conf xmpproom from to ('!':' ':msg) = do
-  return ([from ++ " said: " ++ conf], msg)
+  return ([fst conf ++ " said: " ++ snd conf], (from, msg))
 
 -- default case, all messages
 receiveMessage conf xmpproom from to _msg = do
